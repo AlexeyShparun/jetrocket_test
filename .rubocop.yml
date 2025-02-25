@@ -1,7 +1,9 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-plugins: rubocop-rails # добавить рспек
+plugins: 
+  - rubocop-rails
+  - rubocop-rspec
 
 # Overwrite or add rules to create your own house style
 #
