@@ -44,6 +44,14 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rspec-rails", "~> 7.1", ">= 7.1.1"
+
+  gem "simplecov", require: false
+
+  gem "rubocop", require: false
+
+  gem "rubocop-rails", require: false
+
+  gem "rubocop-rspec", require: false
 end
-
-
