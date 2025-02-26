@@ -58,4 +58,6 @@ group :development, :test do
   gem "httparty", "~> 0.22.0"
 
   gem "faker", "~> 3.5", ">= 3.5.1"
+
+  gem "shoulda-matchers", "~> 6.4"
 end

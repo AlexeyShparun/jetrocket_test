@@ -3,7 +3,7 @@ class Api::V1::RatingsController < ApplicationController
     post = Post.find_by(id: params[:post_id])
     return render_not_found("Post") unless post
 
-    post.with_lock do # лок от гонок
+    post.with_lock do # блок от гонок
       if post.ratings.exists?(user_id: params[:user_id])
         return render json: { error: "User has already rated this post" }, status: :unprocessable_entity
       end

@@ -15,7 +15,7 @@ class Api::V1::PostsController < ApplicationController
     end
 
     def top
-      top_n = [ params[:n].to_i, 100 ].min # поставил сотку дабы при передаче параметта top?
+      top_n = [ params[:n].to_i, 100 ].min # поставил сотку дабы при передаче параметта top? не было много
       posts = Post.joins(:ratings)
                  .select("posts.id, posts.title, posts.body, AVG(ratings.value) as avg_rating")
                  .group("posts.id")

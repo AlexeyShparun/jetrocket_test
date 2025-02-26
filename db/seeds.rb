@@ -1,8 +1,9 @@
+#решил заюзать httparty т.к. через curl производительность была ужасная, с httparty чуть быстрее(всё ещё ад), пытался юзануть parallel, чёт баги летели
 require 'faker'
 require 'httparty'
 
 API_URL = 'http://localhost:3000/api/v1'
-POSTS_COUNT = 200
+POSTS_COUNT = 200_000
 USERS_COUNT = 100
 IPS_COUNT = 50
 RATED_POSTS_RATIO = 0.75

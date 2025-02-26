@@ -281,6 +281,8 @@ GEM
       rubocop (~> 1.72, >= 1.72.1)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    shoulda-matchers (6.4.0)
+      activesupport (>= 5.2.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -346,7 +348,6 @@ DEPENDENCIES
   faker (~> 3.5, >= 3.5.1)
   httparty (~> 0.22.0)
   kamal
-  parallel (~> 1.26, >= 1.26.3)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 8.0.1)
@@ -355,6 +356,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rails-omakase
   rubocop-rspec
+  shoulda-matchers (~> 6.4)
   simplecov
   solid_cable
   solid_cache

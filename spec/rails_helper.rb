@@ -10,9 +10,6 @@ SimpleCov.start 'rails' do # подумать может чего забыл
 
   add_group 'Models', 'app/models'
   add_group 'Controllers', 'app/controllers'
-  add_group 'Helpers', 'app/helpers'
-  add_group 'Jobs', 'app/jobs'
-  add_group 'Mailers', 'app/mailers'
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -84,4 +81,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end
