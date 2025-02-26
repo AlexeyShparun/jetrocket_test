@@ -1,9 +1,56 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+require 'httparty'
+
+API_URL = 'http://localhost:3000/api/v1'
+POSTS_COUNT = 200
+USERS_COUNT = 100
+IPS_COUNT = 50
+RATED_POSTS_RATIO = 0.75
+
+ips = Array.new(IPS_COUNT) { Faker::Internet.unique.ip_v4_address } # 50 айпишников
+
+# posts and usr creating
+USERS_COUNT.times do
+  HTTParty.post(
+    "#{API_URL}/posts",
+    body: {
+      login: Faker::Internet.unique.username,
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph,
+      ip: ips.sample
+    }.to_json,
+    headers: { 'Content-Type' => 'application/json' },
+    timeout: 5
+  )
+end
+
+# user crt
+(POSTS_COUNT - USERS_COUNT).times do
+  HTTParty.post(
+    "#{API_URL}/posts",
+    body: {
+      login: User.all.sample.login,
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph,
+      ip: ips.sample
+    }.to_json,
+    headers: { 'Content-Type' => 'application/json' },
+    timeout: 5
+  )
+end
+
+# add rating
+post_ids = Post.ids.sample((POSTS_COUNT * RATED_POSTS_RATIO).to_i)
+
+post_ids.each do |post_id|
+  HTTParty.post(
+    "#{API_URL}/ratings",
+    body: {
+      post_id: post_id,
+      user_id: User.all.sample.id,
+      value: rand(1..5)
+    }.to_json,
+    headers: { 'Content-Type' => 'application/json' },
+    timeout: 5
+  )
+end

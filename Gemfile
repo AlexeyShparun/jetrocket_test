@@ -54,4 +54,8 @@ group :development, :test do
   gem "rubocop-rails", require: false
 
   gem "rubocop-rspec", require: false
+
+  gem "httparty", "~> 0.22.0"
+
+  gem "faker", "~> 3.5", ">= 3.5.1"
 end
