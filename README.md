@@ -1,21 +1,20 @@
-Blog api
+# Blog api
 
-Data Structure
+## Data Structure
 • users
-    ◦ id
-    ◦ login (string, not null)
+  ◦ id
+  ◦ login (string, not null)
 • posts
-    ◦ user_id (not null)
-    ◦ title (string, not null)
-    ◦ body (text, not null)
-    ◦ ip (not null)
+  ◦ user_id (not null)
+  ◦ title (string, not null)
+  ◦ body (text, not null)
+  ◦ ip (not null)
 • ratings
-    ◦ post_id (not null)
-    ◦ user_id (not null)
-    ◦ value (integer, allowed values from 1 to 5, not null)
+  ◦ post_id (not null)
+  ◦ user_id (not null)
+  ◦ value (integer, allowed values from 1 to 5, not null)
 
-Start
-
+## Start
   rails db:create
   rails db:migrate
   rails s
@@ -23,7 +22,8 @@ Start
 
 For curl testing use it(after starting rails s):
 
-Successful request:
+### Successful request:
+
     curl -X POST http://localhost:3000/api/v1/posts \
     -H "Content-Type: application/json" \
     -d '{
@@ -33,10 +33,12 @@ Successful request:
         "ip": "192.168.1.100"
     }'
 
-List of IPs that were posted by several different authors:
+### List of IPs that were posted by several different authors:
+
     curl -X GET http://localhost:3000/api/v1/posts/ip_list
 
-Rate post(for a "repeat rate" error, repeat it x2):
+### Rate post(for a "repeat rate" error, repeat it x2):
+
     curl -X POST http://localhost:3000/api/v1/ratings \
     -H "Content-Type: application/json" \
     -d '{
@@ -45,4 +47,4 @@ Rate post(for a "repeat rate" error, repeat it x2):
         "value": 5
     }'
 
-Warning! Generating 200000 posts will take a very long time. To improve it I decided to use httparty
+## Warning! Generating 200000 posts will take a very long time. To improve it I decided to use httparty.
