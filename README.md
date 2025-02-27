@@ -20,14 +20,16 @@
     ◦ value (integer, allowed values from 1 to 5, not null)
 
 ## Start
+```
   rails db:create
   rails db:migrate
   rails s
   rails db:seed
+```
 
-For curl testing use it(after starting rails s):
+## For curl testing use it(after starting rails s):
 
-### Successful request:
+#### Successful request:
 
     curl -X POST http://localhost:3000/api/v1/posts \
     -H "Content-Type: application/json" \
@@ -38,11 +40,11 @@ For curl testing use it(after starting rails s):
         "ip": "192.168.1.100"
     }'
 
-### List of IPs that were posted by several different authors:
+#### List of IPs that were posted by several different authors:
 
     curl -X GET http://localhost:3000/api/v1/posts/ip_list
 
-### Rate post(for a "repeat rate" error, repeat it x2):
+#### Rate post(for a "repeat rate" error, repeat it x2):
 
     curl -X POST http://localhost:3000/api/v1/ratings \
     -H "Content-Type: application/json" \
