@@ -1,18 +1,23 @@
 # Blog api
 
 ## Data Structure
-• users
-  ◦ id
-  ◦ login (string, not null)
-• posts
-  ◦ user_id (not null)
-  ◦ title (string, not null)
-  ◦ body (text, not null)
-  ◦ ip (not null)
-• ratings
-  ◦ post_id (not null)
-  ◦ user_id (not null)
-  ◦ value (integer, allowed values from 1 to 5, not null)
+
+### users
+    ◦ id
+    ◦ login (string, not null)
+
+### posts
+
+    ◦ user_id (not null)
+    ◦ title (string, not null)
+    ◦ body (text, not null)
+    ◦ ip (not null)
+
+### ratings
+
+    ◦ post_id (not null)
+    ◦ user_id (not null)
+    ◦ value (integer, allowed values from 1 to 5, not null)
 
 ## Start
   rails db:create
