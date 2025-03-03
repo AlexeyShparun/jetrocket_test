@@ -52,7 +52,7 @@ RSpec.describe 'Posts API', type: :request do
       expect(response).to have_http_status(:unprocessable_entity)
       end
 
-      it 'returns login error' do
+      it 'returns title error' do
         expect(JSON.parse(response.body)['errors']).to include("Title can't be blank")
       end
     end
